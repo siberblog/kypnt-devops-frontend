@@ -1,11 +1,10 @@
-import logo from "./kypnt.png";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src="kypnt.png" className="App-logo" alt="logo" />
         <p>We develop great ideas with passion.</p>
         <a
           className="App-link"
@@ -13,7 +12,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Keypoint Solutions
+          KeyPoint Solutions
         </a>
       </header>
     </div>
