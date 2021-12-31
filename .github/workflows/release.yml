@@ -21,7 +21,24 @@ jobs:
           echo $PACKAGE_VERSION
           echo "\n\n\n"
           echo "PACKAGE_VERSION2=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
+
+      - name: get version
+        id: version
+        uses: notiz-dev/github-action-json-property@release
+        with: 
+          path: 'package.json'
+          prop_path: 'version'
+      - run: echo ${{steps.version.outputs.prop}} 
       
+      - name: get name
+        id: name
+        uses: notiz-dev/github-action-json-property@release
+        with: 
+          path: 'package.json'
+          prop_path: 'name'
+      - run: echo ${{steps.name.outputs.prop}} 
+
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
