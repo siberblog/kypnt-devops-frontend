@@ -11,6 +11,15 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
+      - name: getversion
+        run: |
+          PACKAGE_VERSION=$(cat package.json \
+             grep version \
+             head -1 \
+             awk -F: '{ print $2 }' \
+             sed 's/[",]//g')       
+          echo $PACKAGE_VERSION
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
